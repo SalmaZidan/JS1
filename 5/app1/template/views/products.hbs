@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="An example pen showing how a basic CSS Grid container can create a nice, responsive card layout.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Products</title>
+
+    <style>
+        *,
+        *::before,
+        *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+        }
+
+        html {
+        box-sizing: border-box;
+        font-size: 62.5%;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        
+        }
+        @media (max-width: 60em) {
+        body {
+            padding: 3rem;
+        }
+        }
+        .con{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        padding: 6rem;
+        
+        font-family: "Inter", sans-serif;
+
+        }
+
+        .grid {
+        
+        display: grid;
+        width: 114rem;
+        grid-gap: 6rem;
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        align-items: start;
+        }
+        @media (max-width: 60em) {
+        .grid {
+            grid-gap: 5rem;
+        }
+        }
+        .grid__item {
+        background-color: #fff;
+        border-radius: 0.4rem;
+        overflow: hidden;
+        box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: 0.2s;
+        }
+        .grid__item:hover {
+        transform: translateY(-0.5%);
+        box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.2);
+        }
+
+        .card__img {
+        display: block;
+        width: 100%;
+        height: 18rem;
+        object-fit: cover;
+        }
+        .card__content {
+        padding: 3rem 3rem;
+        }
+        .card__header {
+        font-size: 3rem;
+        font-weight: 500;
+        color: #0d0d0d;
+        margin-bottom: 1.5rem;
+        }
+        .card__text {
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+        line-height: 1.7;
+        color: #3d3d3d;
+        margin-bottom: 2.5rem;
+        }
+        .card__btn {
+        display: block;
+        width: 100%;
+        padding: 1.5rem;
+        font-size: 2rem;
+        text-align: center;
+        color: #3363ff;
+        background-color: #e6ecff;
+        border: none;
+        border-radius: 0.4rem;
+        transition: 0.2s;
+        cursor: pointer;
+        }
+        .card__btn span {
+        margin-left: 1rem;
+        transition: 0.2s;
+        }
+        .card__btn:hover, .card__btn:active {
+        background-color: #dce4ff;
+        }
+        .card__btn:hover span, .card__btn:active span {
+        margin-left: 1.5rem;
+        }
+
+    </style>
+
+  </head>
+
+
+<div class="btn btn-secondary m-3" style="width: 100px;"><a href="http://localhost:3000/products?a={{pageId}}">more</a></div>
+
+<div class="con">
+<div class="grid">
+    {{#each data}}
+  <div class="grid__item">
+    <div class="card"><img class="card__img" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2250&amp;q=80" alt="Snowy Mountains">
+      <div class="card__content">
+        <h1 class="card__header">{{this.products_name}}</h1>
+        <p class="card__text">{{this.products_description}}</p>
+        <h3>Product ID: {{this.products_id}}</h3><br>
+        <button class="card__btn"> <a href="http://localhost:3000/productDetails?id={{this.products_id}}">Details</a> <span>&rarr;</span></button>
+      </div>
+    </div>
+  </div>
+    {{/each}}
+</div></div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+</html>    
